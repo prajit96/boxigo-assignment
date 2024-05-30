@@ -4,9 +4,9 @@ import { FiHome, FiUser, FiClipboard, FiLogOut } from 'react-icons/fi';
 
 const LinkItems = [
   { name: 'MY MOVES', icon: FiHome, path: '/my-moves' },
-  { name: 'MY PROFILE', icon: FiUser, path: '/my-profile' },
-  { name: 'GET QUOTE', icon: FiClipboard, path: '/get-quote' },
-  { name: 'LOGOUT', icon: FiLogOut, path: '/logout' },
+  { name: 'MY PROFILE', icon: FiUser, path: '/' },
+  { name: 'GET QUOTE', icon: FiClipboard, path: '/' },
+  { name: 'LOGOUT', icon: FiLogOut, path: '/' },
 ];
 
 export default function Sidebar({ children }) {
@@ -31,7 +31,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box bg="white" borderRight="1px" borderRightColor="gray.200" w={{ base: 'full', md: 60 }} pos="fixed" h="full" {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">Logo</Text>
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" color="tomato">BOXIGO</Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (

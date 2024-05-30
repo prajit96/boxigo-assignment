@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Accordion, Box, Button, Checkbox, Flex, Icon, Text } from '@chakra-ui/react';
+import { Accordion, Box, Button, Checkbox, Flex, Icon, Spinner, Text } from '@chakra-ui/react';
 import { IoMdHome } from "react-icons/io";
 import { FaCarSide } from "react-icons/fa";
 import { GiPathDistance } from "react-icons/gi";
@@ -11,16 +11,36 @@ import InventoryDetails from './InventoryDetails';
 const MyMoves = () => {
   const [moves, setMoves] = useState([]);
   const [expandedMove, setExpandedMove] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://test.api.boxigo.in/sample-data/')
       .then(response => response.json())
-      .then(data => setMoves(data.Customer_Estimate_Flow));
+      .then(data => {
+        setMoves(data.Customer_Estimate_Flow);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
   }, []);
 
   const handleToggle = (estimate_id) => {
     setExpandedMove(expandedMove === estimate_id ? null : estimate_id);
   };
+  if (loading) {
+    return (
+      <Flex justifyContent="center" alignItems="center" height="100vh">
+        <Spinner 
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='tomato'
+        size='xl' />
+      </Flex>
+    );
+  }
 
   return (
     <Box p="5">
