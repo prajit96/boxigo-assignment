@@ -23,9 +23,9 @@ const InventoryDetails = ({ data }) => {
       <AccordionItem>
         <AccordionButton>
           <Box flex="1" textAlign="left" fontWeight="bold">
-            {data.displayName}
+            <Text color={'tomato'}>{data.displayName} <Box width="25px" height="25px" borderRadius="50%" color={'white'} backgroundColor="tomato">{total}</Box> </Text>
           </Box>
-          <Box>{total}</Box>
+          {/* <Box>{total}</Box> */}
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel pb={4}>
@@ -42,16 +42,17 @@ const InventoryDetails = ({ data }) => {
                         <Flex key={index} mb={2}>
                           <Box>
                             <Text>{elem.displayName}</Text>
+
                             <Text>Q: {elem.qty}</Text>
                           </Box>
                           {elem.type.length > 0 ? (
                             elem.type
-                              .filter(typeele => typeele.selected)
-                              .map((typeele, typeind) => (
-                                <Text key={typeind} ml={4}>Type: {typeele.option}</Text>
+                              .filter(typeEle => typeEle.selected)
+                              .map((typeEle, typeind) => (
+                                <Text key={typeind} ml={4}> {typeEle.option}</Text>
                               ))
                           ) : (
-                            <Text ml={4}>Type: NA</Text>
+                            <Text ml={4}></Text>
                           )}
                         </Flex>
                       )
