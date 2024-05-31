@@ -15,7 +15,7 @@ Toggle Details: Allows users to toggle the visibility of additional move details
 
 Chakra UI: Utilizes Chakra UI components for a consistent and responsive design.
 
-# The application will be available at 'http://localhost:3000'.
+# The application will be available at 'https://boxigo-app-xi.vercel.app/'.
 # Project Structure
 
 src/
