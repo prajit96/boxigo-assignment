@@ -12,18 +12,25 @@ const MyMoves = () => {
   const [moves, setMoves] = useState([]);
   const [expandedMove, setExpandedMove] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://test.api.boxigo.in/sample-data/')
-      .then(response => response.json())
-      .then(data => {
+    const fetchMoves = async () => {
+      try {
+        const response = await fetch(`https://boxigo-backend.vercel.app/api/sample-data`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
         setMoves(data.Customer_Estimate_Flow);
+      } catch (error) {
+        setError(error.message);
+      } finally {
         setLoading(false);
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchMoves();
   }, []);
 
   const handleToggle = (estimate_id) => {
