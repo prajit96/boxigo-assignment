@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, CloseButton, Flex, Icon, Link, Drawer, DrawerContent, Text, useDisclosure } from '@chakra-ui/react';
-import { FiHome, FiUser, FiClipboard, FiLogOut } from 'react-icons/fi';
+import { Box, CloseButton, Flex, Icon, Link, Drawer, DrawerContent, Text, useDisclosure, IconButton } from '@chakra-ui/react';
+import { FiHome, FiUser, FiClipboard, FiLogOut, FiMenu } from 'react-icons/fi';
 
 const LinkItems = [
   { name: 'MY MOVES', icon: FiHome, path: '/' },
@@ -10,16 +10,17 @@ const LinkItems = [
 ];
 
 export default function Sidebar({ children }) {
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box minH="100vh" bg="gray.100">
-      <SidebarContent onClose={onClose} />
+      <SidebarContent onClose={onClose} display={{ base: 'none', md: 'block' }} />
       <Drawer autoFocus={false} isOpen={isOpen} placement="left" onClose={onClose} returnFocusOnClose={false} onOverlayClick={onClose} size="full">
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
+      <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -51,5 +52,19 @@ const NavItem = ({ icon, children, path, ...rest }) => {
         {children}
       </Flex>
     </Link>
+  );
+};
+
+const MobileNav = ({ onOpen }) => {
+  return (
+    <Flex display={{ base: 'flex', md: 'none' }} p="4" bg="white" borderBottomWidth="1px" borderBottomColor="gray.200" alignItems="center" justifyContent="space-between">
+      <IconButton
+        aria-label="Open menu"
+        icon={<FiMenu />}
+        onClick={onOpen}
+        variant="outline"
+      />
+      <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" color="tomato">BOXIGO</Text>
+    </Flex>
   );
 };
