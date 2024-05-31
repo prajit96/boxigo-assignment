@@ -29,7 +29,6 @@ const MyMoves = () => {
         setLoading(false);
       }
     };
-
     fetchMoves();
   }, []);
 
@@ -137,5 +136,6 @@ const MyMoves = () => {
     </Box>
   );
 };
+
 
 export default MyMoves;
