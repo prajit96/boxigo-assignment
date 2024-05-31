@@ -3,7 +3,7 @@ import { Box, CloseButton, Flex, Icon, Link, Drawer, DrawerContent, Text, useDis
 import { FiHome, FiUser, FiClipboard, FiLogOut } from 'react-icons/fi';
 
 const LinkItems = [
-  { name: 'MY MOVES', icon: FiHome, path: '/my-moves' },
+  { name: 'MY MOVES', icon: FiHome, path: '/' },
   { name: 'MY PROFILE', icon: FiUser, path: '/' },
   { name: 'GET QUOTE', icon: FiClipboard, path: '/' },
   { name: 'LOGOUT', icon: FiLogOut, path: '/' },
