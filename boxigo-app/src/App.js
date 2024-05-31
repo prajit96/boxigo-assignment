@@ -13,8 +13,7 @@ const App = () => {
             <Sidebar>
               <Routes>
               <Route path="/" element={<MyMoves />} />
-                <Route path="/my-moves" element={<MyMoves />} />
-                {/* Add routes for other components like MyProfile, GetQuote, Logout */}
+              
               </Routes>
             </Sidebar>
           }

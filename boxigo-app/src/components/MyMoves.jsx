@@ -17,7 +17,8 @@ const MyMoves = () => {
   useEffect(() => {
     const fetchMoves = async () => {
       try {
-        const response = await fetch(`https://boxigo-backend.vercel.app/api/sample-data`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/sample-data`);
+        console.log(response);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
