@@ -13,7 +13,6 @@ const App = () => {
             <Sidebar>
               <Routes>
               <Route path="/" element={<MyMoves />} />
-              
               </Routes>
             </Sidebar>
           }
